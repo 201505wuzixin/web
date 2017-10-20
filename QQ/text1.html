@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    	<script src="js/jquery-2.2.2.js"></script>
+    	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<title>QQ登录</title>
+		<style>
+			#pageone{
+				background-color: #C4CFD4!important;
+				/*background-image: url(image/back1.png);*/
+			}
+			img{
+				width:200px;
+				border-radius:50% ;
+			}
+			.img{
+				text-align: center;
+				padding-top: 50px;;
+			}
+			.inp{
+				padding-top: 10px;
+			}
+			.zhuce{
+				float:right;
+				text-decoration: none;
+				padding-top: 5px;	
+			}
+		</style>
+		<script>
+			$(document).on("pagecreate",function(){
+			$('#btn').click(function(){
+				var password = document.getElementById('password'); 
+				var name=document.getElementById('name');
+				$.ajax({
+				 	type:'get',
+				 	url:' http://datainfo.duapp.com/shopdata/userinfo.php',
+				 	data:{status:'login',userID:name.value,password:password.value},
+				 	dataType:'json',
+				 	success:function(data){
+				 		console.log(data);
+				 		if(data==0){
+				 			alert('用户名不存在！');
+				 		}else if(data==2){
+				 			alert('用户密码错误！');
+				 		}else{
+				 			alert('登录成功!');
+				 			console.log(data);
+							window.location.href="text.html";
+				 		}
+				 	}
+			    })
+		    })
+		})
+		</script>
+	</head>
+	<body>
+		<div data-role="page" id="pageone" data-theme="a">
+			<div data-role="header" data-position="fixed" id="header" data-theme="b">
+				<a href="#" data-icon="arrow-l" data-iconpos="notext"></a>
+				<h1>登录</h1>
+				<a href="#" data-icon="delete" data-iconpos="notext"></a>
+			</div>
+	      	<div data-role="content" id="center">
+	      		<div class="img"><img src="image/qq2.png" alt="" /></div>
+	      		<div class="inp">
+	      			<input type="text" id="name" placeholder="账号"/>
+	      			<input type="password" id="password" placeholder="密码">
+	      			<input type="button" name="denglu" id="btn" value="登录"/>
+	      		</div>
+	      		<div id="zhuce">
+	      			<a href="text2.html" class="zhuce">新用户注册</a>
+	      		</div>
+	      	</div>
+	      	<div data-role="footer" data-position="fixed" id="footer">
+		   </div>
+    	</div> 
+	</body>
+</html>
