@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>car</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    <link rel="stylesheet" href="css/goodcar.css">
+    <script src="js/jquery-2.2.2.js"></script>
+    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+    <script src="js/home.js"></script>
+</head>
+<body>
+ <div data-role="page" id="page1" data-theme="a">
+		<div data-role="header" data-position="fixed" id="header" data-theme="">
+			<a href="index.html" rel="external" data-icon="back" data-iconpos="notext"></a>
+        	<h1>购物车</h1>
+        	<a href="" data-icon="plus" data-iconpos="notext"></a>
+		</div>
+      	<div data-role="content" id="centent" data-theme="" >
+      		<!--购买商品-->
+      		<ul id="buythings" data-role="listview">    
+           </ul>
+           <!--总价-->
+            <div id="all">
+            	<div id="btnfull"><input type="button" id="allbtn" value="全选"></div>
+                <p id="price">总价：<span id="allprice"></span></p>
+                <div id="surebuy"><input type="button" value="确认购买"/></div>
+            </div>
+      	</div>
+      	<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+      		<div data-role="navbar" id="bar">
+	     	<ul>
+				<li><a href="index.html" rel="external" data-icon="wode" >首页</a></li>
+ 				<li><a href="index.html" rel="external" data-icon="xiaoxi">消息</a></li>
+ 				<li><a href="" data-icon="gouwu"  data-iconpos="right" class="ui-btn-active ui-state-persist">购物车</a></li>
+ 				<li><a href="me.html" rel="external" data-icon="me">我</a></li>
+	      	</ul>
+		   </div>
+    	</div>
+  </div>
+  <script type="text/javascript" src="js/goodcar.js"></script>
+</body>
+</html>

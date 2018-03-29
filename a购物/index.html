@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>首页</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    	<link rel="stylesheet" href="css/home.css">
+    	<script src="js/jquery-2.2.2.js"></script>
+    	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+    	<!--商品分类插件-->
+    	<script src="js/jquery.1.11.3.min.js"></script>
+		<script src="js/iscroll.js"></script>
+		<script src="js/navbarscroll.js"></script>
+		<script>
+			//banner轮播
+			var curIndex = 0; 
+			var timeInterval = 1000; 
+			var arr = new Array(); 
+			arr[0] = "image/back1.jpg"; 
+			arr[1] = "image/back2.jpg"; 
+			arr[2] = "image/back3.jpg"; 
+			arr[3] = "image/back4.jpg"; 
+			setInterval(changeImg,timeInterval); 
+			function changeImg() { 
+				var obj = document.getElementById("obj"); 
+				if (curIndex == arr.length-1) { 
+					curIndex = 0; 
+				} else { 
+					curIndex += 1; 
+				} 
+				obj.src = arr[curIndex]; 
+			} 
+			//商品分类
+			$(function(){
+				$('.wrapper').navbarscroll();
+			})
+		</script>
+	</head>
+	<body>
+	<!--首页-->
+    <div data-role="page" id="page1" data-theme="a">
+		<div data-role="header" data-position="fixed" id="header" data-theme="">
+			<a href="#" data-icon="home" data-iconpos="notext"></a>
+			<div id="searchgoods">
+        		<input type="search" name="search" id="search" placeholder="搜索商品"/>
+        		<ul id="goodul">
+        			
+        		</ul>
+			</div>
+        	<a href="" data-icon="search" data-iconpos="notext" id="btn1"></a>
+		</div>
+      	<div data-role="content" id="centent1" data-theme="" >
+      		<!--分类列表-->
+      		<div class="wrapper" id="wrap">
+				<div class="scroller">
+					<ul>
+						<li class="cur" goodid="1">衬衫</li>
+						<li goodid="2">礼服</li>
+						<li goodid="3">棉服</li>
+						<li goodid="4">短外套</li>
+						<li goodid="5">卫衣</li>
+						<li goodid="6">T恤</li>
+						<li goodid="7">风衣</li>
+						<li goodid="8">皮草</li>
+					</ul>	
+				</div>
+			</div>
+    	   <!--轮播图-->
+    	   <div id="lunbo">
+    	   		<img id = "obj" src = "image/back1.jpg" border = 0 /> 
+    	   </div>
+   		    <!--商品分类-->
+    	    <div id="recommend">
+    	    	<img src="image/VIP.png" alt="" />
+    	    	<h2>--精品推荐--</h2>
+    	    </div>
+    	    <!--精品推荐-->
+            <div id="goodLists">
+            	
+            </div>
+      	</div>
+      	<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+      		<div data-role="navbar" id="bar">
+	     	<ul>
+				<li><a href="#" data-icon="wode" data-iconpos="right" class="ui-btn-active ui-state-persist">首页</a></li>
+ 				<li><a id="msg" data-icon="xiaoxi">消息</a></li>
+ 				<li><a href="" id="mycar" data-icon="gouwu">购物车</a></li>
+ 				<li><a href="" id="me" data-icon="me">我</a></li>
+	      	</ul>
+		   </div>
+    	</div>
+    </div>
+    <!--消息-->
+    <div data-role="page" id="page2" data-theme="a">
+		<div data-role="header" data-position="fixed" id="header2" data-theme="">
+			<a href="#page1" data-icon="back" data-iconpos="notext"></a>
+        	<h1>消息(已连接)</h1>
+        	<a href="" data-icon="plus" data-iconpos="notext"></a>
+		</div>
+      	<div data-role="content" id="centent2" data-theme="" >
+      		<div data-role="navbar">
+	      		<ul class="group">
+					<li><a href="#"><img src="image/talk2.png" alt="" /><p>交易物流</p></a></li>
+ 					<li><a href="#"><img src="image/talk4.png" alt="" /><p>互动</p></a></li>
+ 					<li><a href="#"><img src="image/talk1.png" alt="" /><p>通知</p></a></li>
+	     		 </ul>
+	 		</div>
+	 		<!--消息列表-->
+	 		<div class="group1">
+		 		<ul data-role="listview" id="talk" data-icon="false" data-corners="false" > 
+	    			<li><a href="#"><img src="image/talk3.png">
+	    			<p class="time">星期一</p>
+	             	<h2>林夕梦旗舰店</h2>
+	             	<p>好</p></a></li>
+	             	<li><a href="#"><img src="image/talk3.png">
+	             	<p class="time">星期一</p>
+	             	<h2>淘宝头条</h2>
+	             	<p>淘宝推荐:[10万零食1分钱抢]</p></a></li>
+					<li><a href="#"><img src="image/talk3.png">
+					<p class="time">17/11/27</p>
+	             	<h2>考拉零食铺</h2>
+	             	<p>不客气~<p></a></li>
+				</ul>
+	 		</div>
+      	</div>
+      	<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+      		<div data-role="navbar" id="bar">
+	     	<ul>
+				<li><a href="#page1" data-icon="wode" >首页</a></li>
+ 				<li><a id="msg" data-icon="xiaoxi" data-iconpos="right" class="ui-btn-active ui-state-persist">消息</a></li>
+ 				<li><a href="goodcar.html" rel="external" id="mycar" data-icon="gouwu">购物车</a></li>
+ 				<li><a href="me.html" rel="external" id="me" data-icon="me">我</a></li>
+	      	</ul>
+		   </div>
+    	</div>
+    </div> 
+    <script type="text/javascript" src="js/home.js"></script>
+	</body>
+</html>

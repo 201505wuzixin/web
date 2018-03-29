@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   		<meta name="viewport" content="width=device-width, initial-scale=1">
+    	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+    	<script src="js/jquery-2.2.2.js"></script>
+    	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<title>注册</title>
+		<style>
+			#pageone{
+				background: -webkit-gradient(linear, 0 0, 0 bottom, from(rgba(225, 0, 0, 0.4)), to(rgba(100, 100, 150, 0.5)));
+			}
+			img{
+				width:100px;
+			}
+			.img{
+				text-align: center;
+				padding-top: 50px;
+			}
+			#tab{
+				margin-top: 5px;
+				padding-left: 20px;
+				text-align: center;
+				color:#F0F0F0!important;		
+			}
+			#btn{
+				padding-top: 5px;
+			}
+			#tips{
+			   text-decoration: none;
+			   float:right;
+			}
+		</style>
+		<script>
+			function check(){
+				var password = document.getElementById('password'); 
+				var repassword = document.getElementById('repassword');
+				var name=document.getElementById('name');
+				if(repassword.value !== password.value){
+					document.getElementById("tishi").innerHTML="<font color='red'>两次密码不相同</font>";
+                	document.getElementById("btn").disabled = true;
+				}else{
+					//注册接口
+					$.ajax({
+					 	type:'get',
+					 	url:'http://datainfo.duapp.com/shopdata/userinfo.php',
+					 	data:{status:'register',userID:this.name.value,password:this.password.value},
+					 	dataType:'json',
+					 	success:function(data){
+					 		console.log(data);
+					 		if(data==1){
+					 			document.getElementById("tishi").innerHTML="<font color='red'>注册成功！</font>";
+					 			localStorage.setItem('status','true');
+		                        localStorage.setItem('userID',$('#name').val());
+		                        localStorage.setItem('password',$('#password').val());
+					 			window.location.href="login.html";
+					 		}else if(data==0){
+					 			document.getElementById("tishi").innerHTML="<font color='red'>用户名重名！</font>";
+					 		}else if(data==2){
+					 			document.getElementById("tishi").innerHTML="<font color='red'>注册失败！</font>";
+					 		}
+					 	}
+					})
+				}
+			}
+		</script>
+	</head>
+	<body>
+		<div data-role="page" id="pageone" data-theme="a">
+			<div data-role="header" data-position="fixed" id="header" data-theme="">
+				<a href="login.html" rel="external" data-icon="arrow-l" data-iconpos="notext"></a>
+				<h1>注册</h1>
+				<a href="#" data-icon="delete" data-iconpos="notext"></a>
+			</div>
+	      	<div data-role="content" id="center" data-fullscreen="false"> 
+	      		<div class="img"><img src="image/girl.png" alt="" /></div>
+	      		<form action="" onsubmit="check();">
+		      		<table id="tab">
+					<tr>
+						<td><label for="fullname">昵称:<label></td>
+						<td><input type="text" name="name" id="name"></td>
+					</tr>
+					<tr>
+						<td><label for="fullname">密码:<label></td>
+						<td><input type="password" name="password" id="password"></td>
+					</tr>
+					<tr>
+						<td><label for="fullname">确认密码:<label></td>
+						<td><input type="password" name="repassword" id="repassword"><span id="tishi"></span></td>
+					</tr>
+					</table>
+					<input type="submit" name="" id="btn" value="注册"/>
+					<a href="login.html" rel="external" id="tips">已有账户，请登录</a>
+				</form>
+	      	</div>
+	      	<div data-role="footer" data-position="fixed" id="footer">
+	      		
+		   </div>
+    	</div> 
+	</body>
+</html>

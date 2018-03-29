@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>启动swiper</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="js/swiper-3.4.2.min.css">
+	<style>
+		*{
+            margin:0;
+            padding:0;
+        }
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		.swiper-container {
+		    width: 100%;
+		    height:100%;
+		    text-align: center;
+		    font-size: 50px;
+		}
+		.swiper-slide img{
+			width:100%;
+			height:100%;
+		}
+		#init {
+            position: absolute;
+			z-index:101;
+			left:35%;
+			top:70%;
+			width:30%;
+			height:8%;
+			color: #923c47;
+			display:inline-block;
+            box-sizing:border-box;
+			border: 1px solid #d96d7c;
+			background-image: -moz-linear-gradient(#f997b0, #f6677b);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f6677b), to(#f997b0));
+			background-image: -webkit-linear-gradient(#f997b0, #f6677b);
+			background-image: -o-linear-gradient(#f997b0, #f6677b);
+			text-shadow: 1px 1px 1px #fdbcc7;
+			background-color: #f6677b;
+		}
+		#init:hover {
+			border: 1px solid #c75964;
+			background-image: -moz-linear-gradient(#f6677b, #f997b0);
+			background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#f997b0), to(#f6677b));
+			background-image: -webkit-linear-gradient(#f6677b, #f997b0);
+			background-image: -o-linear-gradient(#f6677b, #f997b0);
+			background-color: #f997b0;
+		}
+		#init:active {border: 1px solid #ab3e4b;}
+	</style>
+	<script src="js/swiper-3.4.2.min.js"></script>
+	
+</head>
+<body>
+	<div class="swiper-container">
+	    <div class="swiper-wrapper">
+	        <div class="swiper-slide"><img src="image/2.jpg" alt="" /></div>
+	        <div class="swiper-slide"><img src="image/1.jpg" alt="" /></div>
+	        <div class="swiper-slide"><img src="image/3.jpg" alt="" /></div>
+	        <div class="swiper-slide"><img src="image/5.png" alt="" /></div>
+	        <div class="swiper-slide"><img src="image/4.gif" alt="" />
+	        <input type="button" value="进入会场" name="进入会场" id="init"/></div>
+	    </div>
+	    <!-- 如果需要分页器 -->
+	    <div class="swiper-pagination"></div> 
+	</div>
+	
+</body>
+  <script>
+  	//判断是否为初次登录
+  	window.onload=function(){
+	  	if(localStorage.getItem("install")!=="true"){
+	        location.href="index.html";
+	    }
+  	}
+  	document.getElementById("init").onclick=function(){
+		localStorage.setItem("install","true");
+        location.href="index.html";
+	}
+  </script>
+  <script>
+	//swiper轮播图
+  	var mySwiper = new Swiper ('.swiper-container', {
+    // direction: 'vertical',
+    // 如果需要分页器
+   	    pagination: '.swiper-pagination',
+  	})
+  	</script>
+
+</html>

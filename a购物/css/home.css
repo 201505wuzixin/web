@@ -1,0 +1,158 @@
+		* {    
+		    margin: 0;    
+		    padding: 0;    
+		}  
+    	#page1{
+    	    background-color:rgba(225, 0, 0, 0.08);
+    	}
+    	#page2{
+    	    background-color:rgba(225, 0, 0, 0.1);
+    	}
+    	#page3{
+    		background-color:rgba(225, 0, 0, 0.1);
+    	}
+    	.ui-icon-wode:after{
+    		background:url(../image/wxb.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	.ui-icon-xiaoxi:after{
+    		background:url(../image/xiaoxi.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	.ui-icon-gouwu:after{
+    		background:url(../image/cart.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	.ui-icon-me:after{
+    		background:url(../image/me.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	/*分类列表*/
+    	ul,li{
+			list-style: none;
+		}
+		.wrapper{
+			height: 50px;
+			position: relative;
+		}
+		.wrapper .scroller{
+			position: absolute;
+		}
+		.wrapper li{
+			height: 50px;
+			float: left;
+			line-height: 50px;
+			padding: 0 20px;
+			font-size: 14px;
+			font-weight:bold;
+		}
+		.cur{
+			border-bottom:3px solid hotpink;
+		}
+    	/*轮播图*/ 
+    	#lunbo{
+    		width:100%;
+    		height:200px;
+    		padding-top:10px;
+    	}
+		#lunbo img{
+			width:100%;
+			height:200px;
+		}
+		/*header搜索*/
+    	#centent1{
+    		padding-top: 0px;
+    	}
+    	#searchgoods{
+    		width:70%;
+    		padding-left: 15%;
+    	}
+    	/*搜索商品*/
+    	#goodul{
+    		width:100%;
+    		background-color: #fff;
+    		color:#000!important;    	
+    	}
+    	#goodli{
+    		padding: 5px;
+    	}
+    	#goodli a{
+    		font-size: 12px;
+    		font-weight:normal;
+    		color:#000;
+    	}
+		#goodli a:hover{
+			color:chocolate;
+		}
+		/*精品推荐*/
+        #goodLists{
+        	text-align: center;
+            color:white;
+            overflow: hidden;
+            width:100%;
+            margin:0 auto;
+            padding-top:10px;    
+        }
+        #myli{
+            width:50%;
+            height:180px;
+            padding:5px;
+            float:left;
+            box-sizing:border-box;
+            border:0.5px solid #ccc;
+            background-color:rgba(225, 0, 0, 0.2);
+        }
+        #name{
+            margin:5px 0;
+            font-size:12px;
+            font-weight:normal;
+            color:#000000;
+        }
+        #imglist{
+            width:70%;
+            height:65%;
+        }
+        #price{
+            margin:5px 0;
+            font-size:10px;
+            color:red;
+        }
+        #price::before{
+            content:"￥";
+        }
+    	/*商品列表*/
+    	#recommend{
+    		padding-left:30%;
+    		float:left;
+    		padding-top:5px;
+    		text-align: center;
+    		margin: 0px auto;
+    		width:40%;
+    	}
+    	#recommend img{
+    		width:30px;
+    		display:inline-block;
+    		vertical-align: middle;
+    	}
+    	#recommend h2{
+    		text-align: center;
+    		color:#F2C43D;
+    		font-family:'黑体';
+    		font-size: 19px;
+    	}
+        /*消息页面*/
+       .group img{
+       		width:50px;
+       }
+       .group1{
+       	    padding:13px;
+       }
+       #talk{
+       		padding-top:15px;
+       }
+       .time{
+       		float:right;
+       }
+       #content2{
+       		background-color: #fff!important;
+       }

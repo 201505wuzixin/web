@@ -1,0 +1,79 @@
+			#page1{
+    	    	background-color:rgba(225, 0, 0, 0.08);
+    		}
+			#content{
+				height:100%;
+			}
+			
+			.ui-icon-wode:after{
+	    		background:url(../image/wxb.png) no-repeat;
+	    		background-size: 20px;
+	    	}
+	    	.ui-icon-xiaoxi:after{
+	    		background:url(../image/xiaoxi.png) no-repeat;
+	    		background-size: 20px;
+	    	}
+	    	.ui-icon-gouwu:after{
+	    		background:url(../image/cart.png) no-repeat;
+	    		background-size: 20px;
+	    	}
+	    	.ui-icon-me:after{
+	    		background:url(../image/me.png) no-repeat;
+	    		background-size: 20px;
+	    	}
+	    	#all{
+	    		position:fixed;
+	    		bottom:8%;
+	    		left:5%;
+	    		width:100%;
+	    	}
+	    	#btnfull{
+	    		width:70px;
+	    		float:left;
+	    		display:inline;
+	    	}
+	    	#price{
+	    		color:darkred;
+	    		font-weight: bold;
+	    		padding-top:5px;
+	    		float:left;
+	    		padding-left: 10px;
+	    	}
+	    	#surebuy{
+	    		display:inline;
+	    		float:right;
+	    		width:35%;
+	    		padding-right:20px;
+	    	}
+	    	#myli{
+	    		width:100%;
+	    		border:1px solid #ccc;
+	    		background-color: rgba(225, 0, 0, 0.1);
+	    	}
+	    	#imgs{
+	    		width:30%;
+	    		height:100px;
+	    	}
+	    	#more{
+	    		width:60%;
+	    		float:right;
+	    	}
+	    	#name{
+	    		font-size:12px;
+	    		font-weight: bold;
+	    	}
+	    	#myprice{
+	    		color:red;
+	    	}
+	    	#myprice::before{
+	    		content:"￥";
+	    	}
+	    	#del{
+	    		float:right;
+	    		color: red;
+	    		padding-right: 5px;
+	    	}
+	    	.checkbox{
+	    		padding-right: 5px;
+	    		float:left;
+	    	}

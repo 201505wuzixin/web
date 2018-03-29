@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>我的信息</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	    <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+	    <script src="js/jquery-2.2.2.js"></script>
+	    <script src="js/jquery.mobile-1.4.5.min.js"></script>
+		<style>
+		/*footer样式*/
+		.ui-icon-wode:after{
+    		background:url(image/wxb.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	.ui-icon-xiaoxi:after{
+    		background:url(image/xiaoxi.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	.ui-icon-gouwu:after{
+    		background:url(image/cart.png) no-repeat;
+    		background-size: 20px;
+    	}
+    	.ui-icon-me:after{
+    		background:url(image/me.png) no-repeat;
+    		background-size: 20px;
+    	}
+		/*我的页面*/
+    	#dingdan{
+    		width:100%;
+    	}
+    	#dingdan img{
+    		width:50px;
+    		display:block;
+    	}
+    	#dingdan tr td{
+    		padding-left:10px;
+    	}
+    	#getin{
+    		list-style: none;
+    		padding-left: 0px;
+    	}
+    	#getin img{
+    		width:30%;
+    		padding-left:35%;
+    	}
+    	#getin a{
+    		float:right;
+    		text-decoration:none;
+    		padding-right:50px ;
+    	} 
+    	#view2{
+    		padding-top: 30px;
+    	}
+    	/*面板*/
+    	#panel img{
+    		width:60px;
+    		padding-top:5px；
+    	}
+    	#view1{
+    		padding-top:10px;
+    	}
+    	#btn{
+    		width:200px;
+    		height:50px;
+    		background-color: hotpink;
+    		position:absolute;
+    		left:40px;
+    		top:350px;
+    	}
+		</style>
+	</head>
+	<body>
+		<div data-role="page" id="page3" data-theme="a">
+		<!--面板-->
+    	<div data-role="panel" id="myPanel" data-display="push"> 
+			<ul data-role="listview" id="panel"> 
+				<li><img src="image/girl.png">
+             	<h2 id="username"></h2></li>
+			</ul>
+			<ul data-role="listview" id="view1">
+                <li><img src="image/box1.png" class="ui-li-icon" />收藏夹</li>
+                <li><img src="image/box1.png" class="ui-li-icon" />关注店铺</li>
+                <li><img src="image/box1.png" class="ui-li-icon" />退款售后</li>
+                <li><img src="image/box1.png" class="ui-li-icon" />我的话题</li>
+                <li><img src="image/box1.png" class="ui-li-icon" />我的评价</li>
+			</ul>
+			</br>
+			<button id="btn"></button>
+      </div>
+      
+		<div data-role="header" data-position="fixed" id="header3" data-theme="">
+			<a href="#myPanel" data-icon="user" data-iconpos="notext"></a>
+        	<h1>我的信息</h1>
+        	<a href="" data-icon="plus" data-iconpos="notext"></a>
+		</div>
+      	<div data-role="content" id="centent3" data-theme="">
+      		<div id="getin"> 
+    			<img src="image/girl.png">
+			</div>
+			<hr />
+			<table id="dingdan">
+				<tr>
+					<td><a href=""><img src="image/find.png" alt="" /></a><span>待付款</span></td>
+					<td><a href=""><img src="image/gift.png" alt="" /></a><span>待发货</span></td>
+					<td><a href=""><img src="image/gift1.png" alt="" /></a><span>待收货</span></td>
+					<td><a href=""><img src="image/gift2.png" alt="" /></a><span>待评价</span></td>
+				</tr>
+			</table>
+			<hr />
+			<div class="list1">
+				<ul data-role="listview" id="view2">
+	                <li><img src="image/bao.png" class="ui-li-icon" />卡劵包</li>
+	                <li><img src="image/dai.png" class="ui-li-icon" />领劵中心</li>
+	                <li><img src="image/people.png" class="ui-li-icon" />会员中心</li>
+	                <li><img src="image/juice.png" class="ui-li-icon" />我的小蜜</li>
+	                <li><img src="image/shipin.png" class="ui-li-icon" />蚂蚁花呗</li>
+				</ul>
+			</div>
+      	</div>
+      	
+      	<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+      		<div data-role="navbar" id="bar">
+	     	<ul>
+				<li><a href="index.html" rel="external" data-icon="wode" >首页</a></li>
+ 				<li><a href="index.html" rel="external" data-icon="xiaoxi">消息</a></li>
+ 				<li><a href="goodcar.html" rel="external" data-icon="gouwu">购物车</a></li>
+ 				<li><a href="#" data-icon="me" data-iconpos="right" class="ui-btn-active ui-state-persist">我</a></li>
+	      	</ul>
+		   </div>
+    	</div>
+    </div>
+    <script>
+    	//面板退出登录
+    		$(document).on("pagecreate",function(){
+    		var btn=document.getElementById("btn");
+    		if(localStorage.getItem('status')=='true'){
+    			
+			  	document.getElementById("username").innerHTML=localStorage.getItem("userID"); 
+			      	btn.innerHTML="退出登录";
+			        btn.onclick=function(){
+			        	localStorage.removeItem("status");
+				        localStorage.removeItem("userID");
+				        localStorage.removeItem("password");
+				        location.href="login.html";
+			        }
+		        }else{
+		        	btn.innerHTML="登录";
+		        	btn.onclick=function(){	
+				        location.href="login.html";
+			        }
+		        }
+			})
+    </script>
+	</body>
+</html>

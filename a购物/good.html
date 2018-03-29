@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>商品信息</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   	<meta name="viewport" content="width=device-width, initial-scale=1">
+   	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+   	<script src="js/jquery-2.2.2.js"></script>
+   	<script src="js/jquery.mobile-1.4.5.min.js"></script>
+   	<style>
+   		#good{
+   			list-style: none;
+   		}
+   		#imgs{
+   			width:100%;
+   			height:300px;
+   		}
+   		#name{
+   			font-weight:bold;
+   		}
+   		#price{
+   			color:red;
+   		}
+   		#price::before{
+   			content:"￥";
+   		}
+   		#more{
+   			font-size: 10px;
+   		}
+   		#nums{
+   			float:right;
+   			font-size: 10px;
+   		}
+   		#all{
+   			background-color: rgba(225, 0, 0, 0.2);
+   		}
+   		#footer img{
+   			width:40px;
+   		}
+   		#footer p{
+   			padding:0px;
+   			float:right;
+   		}
+   		#goodin{
+   			background-color: hotpink!important;
+   			float:right;
+   		}
+   		#goodin p{
+   			text-align: center;
+   			padding-top: 3px;
+   		}
+   		#myPopupDialog{
+   			width:300px;
+   			height:300px;
+   		}
+   		#main{
+   			display:inline;
+   		}
+   		#num1{
+   			width:60%;
+   			padding-left: 20%;
+   		}
+   		.close{
+   			float:left;
+   			display: inline;
+   		}
+   		#sure{
+   			padding:10px;
+   			text-decoration: none;
+   			float:left;
+   			padding-left:20%;
+   			width:60%;
+   		}
+   	</style>
+</head>
+<body>
+	<div data-role="page" id="page" data-theme="a">
+		<div data-role="header" data-position="fixed" id="header" data-theme="">
+			<a href="index.html" rel="external" data-icon="back" data-iconpos="notext"></a>
+        	<h1>商品信息</h1>
+        	<a href="index.html" rel="external" data-icon="back" data-iconpos="notext"></a>
+		</div>
+      	<div data-role="content" id="centent" data-theme="">
+      		<div id="lunbo">
+    	   </div>
+    	   <!--商品信息-->
+			<div id="goodList"></div>
+      	</div>
+      	<div data-role="footer" data-position="fixed" id="footer" data-theme="a">
+      		<a href="index.html" rel="external"><img src="image/gift.png" alt="" /><p>首页</p></a>
+      		<a href="" id="mycar"><img src="image/goodcar.png" alt="" /><p>购物车</p></a>
+      		<a href="#myPopupDialog" data-rel="popup" class="ui-btn" id="goodin"><p>加入购物车</p></a>
+				<div data-role="popup" data-position-to="window" id="myPopupDialog">
+				  <div data-role="header"><h1>加入购物车</h1></div>
+					  <div data-role="main" class="ui-content" id="main">
+					  	<!--弹出框-->
+						<div id="num1">
+							<p class="chose">选择数量：</p>
+							<input type="number" id="num"/>
+							<p id="tishi"></p>
+						</div>
+						<a href="#" id="sure"><button id="btn">确定</button></a>
+					  </div>
+				  </div>
+				</div>
+		</div>
+	<script>
+		//判断是否登录
+	    $('#mycar').click(function(){
+	        if(localStorage.getItem('status')=='true'){
+	        	window.location.href="goodcar.html";
+	        }else{
+	            alert("请登录！");
+	            window.location.href="login.html";
+	        }
+	    });
+        //获取商品信息
+   		$(document).on('pageinit','#page',function(){
+            $.ajax({
+                url:'http://datainfo.duapp.com/shopdata/getGoods.php',
+                type:'POST',
+                dataType:'JSONP',
+                data:{goodsID:location.hash.slice(1)},
+	            success:function(data){
+	            	console.log(data);
+	            	$('#goodList').html('<li id="good"><img src="'+data[0].goodsListImg+'" alt="" id="imgs"><p id="name">'+data[0].goodsName+'</p><p id="price">'+data[0].price
++'</p><div id="all"><p id="more">'+data[0].detail+'</p><p id="nums">数量：'+data[0].discount+'</p></div></li>')
+		        }
+        	})
+    	})
+   		//点击加入购物车
+   		$('#btn').click(function(){
+   			var tishi=document.getElementById('tishi');
+            var sure=document.getElementById('sure');
+          	if(localStorage.getItem('status')=='true'){
+	            $.ajax({
+	                url:'http://datainfo.duapp.com/shopdata/updatecar.php',
+	                type:'POST',
+	                dataType:'JSON',
+	                data:{
+	                    userID:localStorage.getItem('userID'),
+	                    goodsID:location.hash.slice(1),
+	                    number:$('#num').val(),
+	                },
+	                success:function(data){
+	                	
+	                    if(data==1){
+	                    	tishi.innerHTML="<font color='green'>添加购物车成功！</font>";
+	                    	sure.setAttribute("data-rel","back");
+	                    }else{
+	                        tishi.innerHTML="<font color='red'>添加购物车失败！</font>";
+	                        sure.setAttribute("data-rel","back");
+	                    }
+	                }
+	            });
+          	}else{
+              alert('请先登录！');
+         	}
+        });
+   	</script>
+</body>
+</html>
